@@ -2,6 +2,7 @@ package tools
 
 import (
 	"encoding/xml"
+	"github.com/kpawlik/geojson"
 	"io/ioutil"
 	"strconv"
 )
@@ -27,6 +28,39 @@ func NewTraffic(sections []SectionJSON, informations []InformationJSON) *Traffic
 	}
 
 	return traffic
+}
+
+func (traffic *Traffic) TOGeoJson() {
+
+	featureCollection := geojson.NewFeatureCollection(nil)
+	for _, v := range traffic.sections {
+
+		var lineStringCoordinates geojson.Coordinates
+		for _, line := range v.SectionPoints {
+
+			x, _ := line.X.Float64()
+			y, _ := line.Y.Float64()
+
+			c := geojson.Coordinate{geojson.CoordType(x), geojson.CoordType(y)}
+
+			lineStringCoordinates = append(lineStringCoordinates, c)
+		}
+
+		lineString := geojson.NewLineString(lineStringCoordinates)
+
+		//color := traffic.informations[v.Id].ColorCode
+		properties := map[string]interface{}{"name": v.Id}
+		feature := geojson.NewFeature(lineString, properties, nil)
+
+		featureCollection.AddFeatures(feature)
+	}
+
+	buff, _ := geojson.Marshal(featureCollection)
+	err := ioutil.WriteFile("render/traffic.geojson", []byte(buff), 0666)
+	if err != nil {
+		panic(err)
+	}
+
 }
 
 func (traffic *Traffic) ToKML() {

@@ -20,11 +20,11 @@ func main() {
 
 	m.Get("/traffic", func() (int, string) {
 
-		if _, err := os.Stat("render/traffic.kml"); os.IsNotExist(err) {
+		if _, err := os.Stat("render/traffic.geojson"); os.IsNotExist(err) {
 			if traffic := NewTraffic(GetSections()[:], GetInformations()[:]); traffic == nil {
 				log.Fatal("Could not initialize kml")
 			} else {
-				traffic.ToKML()
+				traffic.TOGeoJson()
 			}
 		}
 
