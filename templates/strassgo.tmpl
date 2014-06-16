@@ -2,27 +2,38 @@
 <html>
 <head>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+
     <style type="text/css">
         html { height: 100% }
         body { height: 100%; margin: 0; padding: 0 }
-        #map-canvas { height: 100% }
+        #map { height: 100% }
     </style>
-    <script type="text/javascript"
-            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAiyFJ7yLqh4zn_m5mctEBUQYuLPgjQko8&sensor=false">
-    </script>
-    <script type="text/javascript">
-        function initialize() {
-            var mapOptions = {
-                center: new google.maps.LatLng(48.5834200,7.7429600),
-                zoom: 12
-            };
-            var map = new google.maps.Map(document.getElementById("map-canvas"),
-                    mapOptions);
-        }
-        google.maps.event.addDomListener(window, 'load', initialize);
-    </script>
+
 </head>
 <body>
-<div id="map-canvas"/>
+<div id="map"></div>
+
+    <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+
+    <script src='//api.tiles.mapbox.com/mapbox.js/plugins/leaflet-omnivore/v0.1.2/leaflet-omnivore.min.js'></script>
+<script>
+
+		var map = L.map('map').setView([48.5834200, 7.7429600], 12);
+
+		L.tileLayer('https://{s}.tiles.mapbox.com/v3/{id}/{z}/{x}/{y}.png', {
+			maxZoom: 18,
+			attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
+				'<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+				'Imagery © <a href="http://mapbox.com">Mapbox</a>',
+			id: 'examples.map-i86knfo3'
+		}).addTo(map);
+
+	omnivore.kml('traffic').addTo(map);
+
+
+
+	</script>
 </body>
 </html>

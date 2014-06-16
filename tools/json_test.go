@@ -1,23 +1,23 @@
-package main
+package tools
 
 import (
-	"testing"
 	"io/ioutil"
+	"testing"
 )
 
-func TestDownloadSection(t *testing.T){
+func TestDownloadSection(t *testing.T) {
 
 	_, err := downloadJSON(JSONSectionUrl)
 	if err != nil {
-		t.Error(" Error in downloading JSON");
+		t.Error(" Error in downloading JSON")
 	}
 }
 
-func TestUnmarshalSection(t *testing.T){
+func TestUnmarshalSection(t *testing.T) {
 
-	json_file ,err := ioutil.ReadFile("section_test.json")
+	json_file, err := ioutil.ReadFile("section_test.json")
 
-	if err != nil{
+	if err != nil {
 		t.Error("Could not open json file")
 	}
 
@@ -26,6 +26,3 @@ func TestUnmarshalSection(t *testing.T){
 		t.Error("Sections should not have zero size")
 	}
 }
-
-
-
