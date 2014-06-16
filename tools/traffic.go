@@ -48,8 +48,20 @@ func (traffic *Traffic) TOGeoJson() {
 
 		lineString := geojson.NewLineString(lineStringCoordinates)
 
-		//color := traffic.informations[v.Id].ColorCode
-		properties := map[string]interface{}{"name": v.Id}
+		color := traffic.informations[v.Id].ColorCode
+
+		var ColorString string
+
+		switch color {
+		case SectionGreen:
+			ColorString = "Green"
+		case SectionYellow:
+			ColorString = "Yellow"
+		case SectionRed:
+			ColorString = "Red"
+		}
+
+		properties := map[string]interface{}{"name": v.Id, "color": ColorString}
 		feature := geojson.NewFeature(lineString, properties, nil)
 
 		featureCollection.AddFeatures(feature)
