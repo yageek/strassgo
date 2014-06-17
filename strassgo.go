@@ -11,6 +11,8 @@ import (
 	"time"
 )
 
+var lastRefresh time.Time
+
 func generateGeoJSON() {
 	fmt.Println("Generate JSON...")
 	if traffic := NewTraffic(GetSections()[:], GetInformations()[:]); traffic == nil {
@@ -38,6 +40,7 @@ func main() {
 			currentTime := time.Now()
 			if currentTime.Sub(fileInfo.ModTime()).Seconds() > 180 {
 				fmt.Println("File to old...")
+				lastRefresh = time.Now()
 				generateGeoJSON()
 			}
 		}
