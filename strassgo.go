@@ -28,7 +28,7 @@ func main() {
 			}
 		}
 
-		data, _ := ioutil.ReadFile("render/traffic.kml")
+		data, _ := ioutil.ReadFile("render/traffic.geojson")
 		return 200, string(data)
 	})
 

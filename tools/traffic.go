@@ -54,11 +54,11 @@ func (traffic *Traffic) TOGeoJson() {
 
 		switch color {
 		case SectionGreen:
-			ColorString = "Green"
+			ColorString = "#00FF00"
 		case SectionYellow:
-			ColorString = "Yellow"
+			ColorString = "#FFFB00"
 		case SectionRed:
-			ColorString = "Red"
+			ColorString = "#FF0000"
 		}
 
 		properties := map[string]interface{}{"name": v.Id, "color": ColorString}
