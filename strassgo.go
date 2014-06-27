@@ -2,8 +2,9 @@ package main
 
 import (
 	"fmt"
-	"github.com/codegangsta/martini"
-	"github.com/codegangsta/martini-contrib/render"
+	"github.com/go-martini/martini"
+	"github.com/martini-contrib/cors"
+	"github.com/martini-contrib/render"
 	. "github.com/yageek/strassgo/tools"
 	"io/ioutil"
 	"log"
@@ -28,7 +29,7 @@ func main() {
 	m.Use(render.Renderer())
 
 	m.Get("/", func(r render.Render) {
-		r.HTML(200, "strassgo", "jeremy")
+		r.HTML(200, "strassgo", nil)
 	})
 
 	m.Get("/traffic", func() (int, string) {
