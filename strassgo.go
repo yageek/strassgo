@@ -25,14 +25,21 @@ func generateGeoJSON() {
 
 func main() {
 	m := martini.Classic()
+	corsHandler := cors.Allow(&cors.Options{
 
+		AllowOrigins:     []string{"https://*.foo.com"},
+		AllowMethods:     []string{"GET"},
+		AllowHeaders:     []string{"Origin"},
+		ExposeHeaders:    []string{"Content-Length"},
+		AllowCredentials: true,
+	})
 	m.Use(render.Renderer())
 
 	m.Get("/", func(r render.Render) {
 		r.HTML(200, "strassgo", nil)
 	})
 
-	m.Get("/traffic", func() (int, string) {
+	m.Get("/traffic", corsHandler, func() (int, string) {
 
 		if fileInfo, err := os.Stat("render/traffic.geojson"); os.IsNotExist(err) {
 			fmt.Println("First time creating...")
