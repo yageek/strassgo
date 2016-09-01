@@ -1,0 +1,43 @@
+{
+	"comment": "",
+	"ignore": "test",
+	"package": [
+		{
+			"checksumSHA1": "fcfxNsCuheCrubAAl6zWgimCnLY=",
+			"path": "github.com/codegangsta/inject",
+			"revision": "33e0aa1cb7c019ccc3fbe049a8262a6403d30504",
+			"revisionTime": "2015-01-14T23:56:00Z"
+		},
+		{
+			"checksumSHA1": "yQqYQc9nHrkGNNEdQ0bcwb1qe3o=",
+			"path": "github.com/go-martini/martini",
+			"revision": "c257c412d547ac70fcaf5596c1a50a7cb832c1fc",
+			"revisionTime": "2016-06-18T11:20:59Z"
+		},
+		{
+			"checksumSHA1": "VCik5jfrQXtbZeRJ6Z/dxWgJTt4=",
+			"path": "github.com/kpawlik/geojson",
+			"revision": "03fc5b389cd1027cb3f5ce4aa97f0e6af61d8579",
+			"revisionTime": "2016-08-08T10:56:47Z"
+		},
+		{
+			"checksumSHA1": "zlwOW/qUO9y3lzmJc9/qG0L72b4=",
+			"path": "github.com/martini-contrib/cors",
+			"revision": "553b9208d353a39b0850c02355f478ba020c86d7",
+			"revisionTime": "2014-10-16T00:30:11Z"
+		},
+		{
+			"checksumSHA1": "WMoHBLFJLLvhzbnatHIY+SgrrFI=",
+			"path": "github.com/martini-contrib/render",
+			"revision": "ec18f8345a1181146728238980606fb1d6f40e8c",
+			"revisionTime": "2015-07-07T14:21:08Z"
+		},
+		{
+			"checksumSHA1": "uG/irJIgifYdc+HC1kF6Gwgn7kU=",
+			"path": "github.com/oxtoacart/bpool",
+			"revision": "4e1c5567d7c2dd59fa4c7c83d34c2f3528b025d6",
+			"revisionTime": "2015-07-12T13:31:11Z"
+		}
+	],
+	"rootPath": "github.com/yageek/strassgo"
+}
